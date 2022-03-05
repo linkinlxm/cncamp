@@ -5,3 +5,6 @@
 - 通过 docker 命令本地启动 httpserver
 - 通过 nsenter 进入容器查看 IP 配置
 作业需编写并提交 Dockerfile 及源代码
+
+
+dockerhub的image：linkinlxm/cncamp:http_v1
