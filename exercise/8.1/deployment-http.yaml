@@ -1,0 +1,74 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: http-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: http
+  template:
+    metadata:
+      labels:
+        app: http
+    spec:
+      imagePullSecrets:      
+        - name: lincoln 
+      containers:
+        - 
+          name: http
+          image: linkinlxm/cncamp:1.8
+          ports:
+            - containerPort: 80
+          env:
+            - name: VERSION
+              valueFrom: 
+                configMapKeyRef:
+                  key: http-env
+                  name: http-env
+          startupProbe:
+            httpGet:
+              path: /healthyz
+              port: 80
+            failureThreshold: 30
+            periodSeconds: 10
+          readinessProbe:
+            exec:
+              command:
+                - ls
+                - /app/http
+            initialDelaySeconds: 5
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              port: 80
+              path: /healthyz
+              httpHeaders:
+                - name: Custom-Headers
+                  value: Awsome
+            initialDelaySeconds: 3
+            periodSeconds: 3
+          lifecycle:
+            preStop:
+              exec:
+                command: 
+                - echo "stoping"
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "500m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          dnsPolicy: ClusterFirst
+          restartPolicy: Always
+          schedulerName: default-scheduler
+          securityContext: {}
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: http-env
+data:
+  http-env: some_test_env_version
