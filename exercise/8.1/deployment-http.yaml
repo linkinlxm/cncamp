@@ -60,10 +60,10 @@ spec:
             limits:
               memory: "128Mi"
               cpu: "500m"
-          dnsPolicy: ClusterFirst
-          restartPolicy: Always
-          schedulerName: default-scheduler
-          securityContext: {}
+#          dnsPolicy: ClusterFirst
+#          restartPolicy: Always
+#          schedulerName: default-scheduler
+#          securityContext: {}
 
 ---
 apiVersion: v1
