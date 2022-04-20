@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: http-deployment
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: http
@@ -12,6 +12,25 @@ spec:
       labels:
         app: http
     spec:
+      affinity:
+        # podAffinity:
+        #   requiredDuringSchedulingIgnoredDuringExecution:
+        #   - labelSelector:
+        #       matchExpressions:
+        #         - key: a
+        #           operator: In
+        #           values:
+        #             - b
+        #     topologyKey: kubernetes.io/hostname
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+                - key: app
+                  operator: In
+                  values:
+                    - http
+            topologyKey: kubernetes.io/hostname
       imagePullSecrets:      
         - name: lincoln 
       containers:
@@ -56,10 +75,10 @@ spec:
           resources:
             requests:
               memory: "128Mi"
-              cpu: "500m"
+              cpu: "256m"
             limits:
               memory: "128Mi"
-              cpu: "500m"
+              cpu: "256m"
 #          dnsPolicy: ClusterFirst
 #          restartPolicy: Always
 #          schedulerName: default-scheduler
