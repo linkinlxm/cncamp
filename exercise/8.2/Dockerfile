@@ -18,7 +18,7 @@ RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 && \
 #FROM krallin/centos-tini:trusty
 FROM krallin/centos-tini:centos7
 WORKDIR /app
-
+RUN yum update -y && yum upgrade -y
 COPY --from=builder /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 COPY --from=builder /bin/http /app/http
