@@ -1,3 +1,5 @@
+### 作业要求
+>
 为 HTTPServer 添加 0-2 秒的随机延时；
 为 HTTPServer 项目添加延时 Metric；
 将 HTTPServer 部署至测试集群，并完成 Prometheus 配置；
@@ -5,11 +7,11 @@
 （可选）创建一个 Grafana Dashboard 展现延时分配情况。
 提交地址： https://jinshuju.net/f/awEgbi
 截止日期：2022 年 4 月 24 日 23:59
+>
 
 
 
-
-1. 通过makefile build好image，部署deplotment
+1. 通过makefile build好image，部署deplotment； 具体代码在：https://github.com/linkinlxm/cncamp/tree/main/exercise/10.1/app
 2. 部署loki-grafana
 ```
 helm upgrade --install loki grafana/loki-stack --set grafana.enabled=true,prometheus.enabled=true,prometheus.alertmanager.persistentVolume.enabled=false,prometheus.server.persistentVolume.enabled=false
