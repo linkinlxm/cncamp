@@ -100,4 +100,6 @@ Then you will get grafana login password, the login username is 'admin' on defau
 
 ![image-20220423173333763](image/image-20220423173333763.png)
 
-![image-20220423173139741](image/image-20220423173139741.png)
+
+
+![image-20220423173720149](image/image-20220423173720149.png)
