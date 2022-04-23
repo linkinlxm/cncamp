@@ -39,7 +39,7 @@ spec:
       containers:
         - 
           name: http-prometheus
-          image: linkinlxm/cncamp/http-prometheus:1.0
+          image: linkinlxm/cncamp:prometheus_v1.0
           ports:
             - containerPort: 80
           env:

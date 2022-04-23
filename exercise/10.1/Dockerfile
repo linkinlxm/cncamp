@@ -6,7 +6,7 @@ FROM golang:1.17 AS builder
 RUN apt update && apt upgrade -y && apt install -y ca-certificates tzdata
 WORKDIR /app
 
-COPY ./app/* ./
+COPY ./app/ ./
 RUN ls -lh ./
 RUN go env -w GO111MODULE=on && \
     go env -w GOPROXY=https://goproxy.cn,direct && \
