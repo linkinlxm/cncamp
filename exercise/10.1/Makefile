@@ -1,5 +1,5 @@
-BASE_NAME = linkinlxm/cncamp/http-prometheus
-TAG = v1.0
+BASE_NAME = linkinlxm/cncamp
+TAG = prometheus_v1.0
 
 # root:
 # 	export ROOT=github.com/cncamp/golang
